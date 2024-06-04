@@ -5,7 +5,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+#source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+source /usr/local/share/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -33,9 +34,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export PATH=$PATH:/Users/joseanmartinez/.spicetify
+#export PATH=$PATH:/Users/joseanmartinez/.spicetify
 
-export PATH="$HOME/.rbenv/shims:$PATH"
+#export PATH="$HOME/.rbenv/shims:$PATH"
 
 # ---- FZF -----
 
@@ -99,6 +100,8 @@ export BAT_THEME=tokyonight_night
 # ---- Eza (better ls) -----
 
 alias ls="eza --icons=always"
+alias ll="eza --long --git --icons=always --sort=modified"
+alias la="eza --all --long --git --icons=always --sort=modified"
 
 # ---- TheFuck -----
 
@@ -110,3 +113,15 @@ eval $(thefuck --alias fk)
 eval "$(zoxide init zsh)"
 
 alias cd="z"
+
+#OpenShift Sandbox Cluster
+alias oc="/Applications/oc"
+alias tkn="/Applications/tkn/tkn"
+alias tkn-pac="Applications/tkn/tkn-pac"
+alias opc="/Applications/tkn/opc"
+
+#Load oc auto-completion for zsh
+autoload -Uz compinit
+compinit
+source <(oc completion zsh)
+compdef _oc oc
